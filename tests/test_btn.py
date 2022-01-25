@@ -6,7 +6,7 @@ import sphinxcontrib.btn.btn as btn
 from sphinxcontrib.btn.font_handler import Fontawesome
 
 
-class TestIcon:
+class TestBtn:
     def test_get_glyph(self, icons, data_dir):
 
         btn.font_handler = Fontawesome()
@@ -37,59 +37,64 @@ class TestIcon:
         #
         # assert str(e.value) == 'icon "toto" is not part of fontawesome 5.15.4'
 
-    def test_visit_html(self, app, icons, data_dir):
+    def test_visit_html(self, app, btn_list, data_dir):
 
         btn.font_handler = Fontawesome()
         btn.font_handler.download_asset("html", data_dir)
 
-        for i in icons["true"].values():
-            btn.visit_icon_node_html(app, i)
-            assert app.body.output == f'<i class="{i["icon"]}"></i>'
+        expected_results = {
+            "all": '<span class="guilabel"><i class="fa fa-check" style="margin-right: .5em;"></i>validate</span>',
+            "icon": '<span class="guilabel"><i class="fa fa-globe" ></i></span>',
+            "text": '<span class="guilabel"><i class="" ></i>version</span>',
+        }
 
-        for i in icons["false"].values():
-            with pytest.raises(nodes.SkipNode):
-                btn.visit_icon_node_html(app, i)
+        for k, b in btn_list.items():
+            btn.visit_btn_node_html(app, b)
+            assert app.body.output == expected_results[k]
 
         return
 
-    def test_visit_latex(self, app, icons, data_dir):
+    def test_visit_latex(self, app, btn_list, data_dir):
 
         btn.font_handler = Fontawesome()
         btn.font_handler.download_asset("latex", data_dir)
 
-        # expecteed results for true icons
+        # expecteed results for true the fixture inputs
         expected_results = {
-            "folder": "\\faIcon{folder}",
-            "fas": "\\faIcon[solid]{ad}",
-            "fa": "\\faIcon{save}",
-            "far": "\\faIcon[regular]{address-book}",
-            "fab": "\\faIcon[brand]{github}",
+            "all": "\\sphinxbtn{\\faIcon{check} validate}",
+            "icon": "\\sphinxbtn{\\faIcon{globe}}",
+            "text": "\\sphinxbtn{version}",
         }
 
-        for k, i in icons["true"].items():
-            btn.visit_icon_node_latex(app, i)
+        for k, b in btn_list.items():
+            btn.visit_btn_node_latex(app, b)
             assert app.body.output == expected_results[k]
 
-        # check that the package was added once
-        assert app.elements["preamble"] == "\\usepackage{fontawesome5}\n"
+        # check that the package was added only once
+        macro = (
+            "\\usepackage{fontawesome5}\n"
+            + "\\usepackage{tcolorbox}\n"
+            + "\\newtcbox{\\sphinxbtn}[1][]{box align=base, nobeforeafter, size=small, boxsep=2pt, #1}\n"
+        )
+        assert app.elements["preamble"] == macro
 
         return
 
-    def test_visit_unsuported(self, app, icons):
+    def test_visit_unsuported(self, app, btn_list):
 
         # check that the appropiate error is raised
         with pytest.raises(nodes.SkipNode):
-            btn.visit_icon_node_unsuported(app, icons["true"]["folder"])
+            btn.visit_btn_node_unsuported(app, btn_list["all"])
 
         return
 
-    def test_icon_role(self, icons):
+    def test_icon_role(self, btn_list):
 
         # check that the node has the appropirate class
         _ = None
-        node, messages = btn.icon_role(_, _, icons["true"]["folder"], _, _)
+        node, messages = btn.btn_role(_, _, btn_list["all"]["icon"], _, _)
 
-        assert isinstance(node[0], btn.icon)
+        assert isinstance(node[0], btn.btn)
         assert len(messages) == 0
 
         return
@@ -115,9 +120,7 @@ class TestIcon:
         """mock the app builder for warning in fonctions"""
 
         class Builder:
-            def warn(self, str):
-                print(str)
-                return
+            pass
 
         class Body:
             def append(self, str):
@@ -138,3 +141,13 @@ class TestIcon:
         data_dir = Path(__file__).parent / "data"
 
         return data_dir
+
+    @pytest.fixture
+    def btn_list(self):
+        """all possible combination of btn"""
+
+        return {
+            "all": {"icon": "fa fa-check", "text": "validate"},
+            "icon": {"icon": "fa fa-globe", "text": ""},
+            "text": {"icon": "", "text": "version"},
+        }

@@ -113,13 +113,13 @@ def visit_btn_node_latex(self, node):
     # create the macro to display the btn in the latex document
     # install 2 packages tcolorbox and fontawesome5
     # create a sphinxbtn command
-    macro = """
-    \\usepackage{fontawesome5}
-    \\usepackage{tcolorbox}
-    \\newtcbox{\\sphinxbtn}[1][]{box align=base, nobeforeafter, size=small, boxsep=2pt, #1}
-    """
+    macro = (
+        "\\usepackage{fontawesome5}\n"
+        + "\\usepackage{tcolorbox}\n"
+        + "\\newtcbox{\\sphinxbtn}[1][]{box align=base, nobeforeafter, size=small, boxsep=2pt, #1}\n"
+    )
     if macro not in self.elements["preamble"]:
-        self.elements["preamble"] += f"{macro}\n"
+        self.elements["preamble"] += macro
 
     # start building the content of the command
     content = ""
@@ -167,7 +167,7 @@ def visit_btn_node_unsuported(self, node):
     :param node: the btn node
     """
 
-    self.builder.warn("Unsupported output format (node skipped)")
+    logger.warning("Unsupported output format (node skipped)", location=node)
     raise nodes.SkipNode
 
 
