@@ -16,12 +16,12 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.abspath("."))
 
-from sphinxcontrib.icon import __author__, __version__
+from sphinxcontrib.btn import __author__, __version__
 
 
 # -- Project information -------------------------------------------------------
 
-project = "sphinx-icon"
+project = "sphinx-btn"
 copyright = f"2020-{datetime.now().year}, {__author__}"
 author = __author__
 
@@ -38,7 +38,7 @@ extensions = [
     "sphinx.ext.imgconverter",
     "sphinx_copybutton",
     "sphinxcontrib.spelling",
-    "sphinxcontrib.icon",
+    "sphinxcontrib.btn",
 ]
 
 # Add any paths that contain templates here, relative to this directory.

@@ -5,7 +5,10 @@ from subprocess import check_call
 
 class DevelopCmd(develop):
     def run(self):
-        """overwrite run command to install pre-commit hooks in dev mode"""
+        """
+        overwrite run command to install pre-commit hooks in dev mode
+        """
+
         check_call(["pre-commit", "install", "-t", "pre-commit", "-t", "commit-msg"])
         super().run()
 
@@ -13,15 +16,15 @@ class DevelopCmd(develop):
 
 
 # set the version number
-version = "0.1.0"
+version = "0.0.0"
 
 # set some text as CONST variables for readability
-DESCRIPTION = "A sphinx custom role to embed inline fontawesome incon in the latex and html outputs"
+DESCRIPTION = "A sphinx custom role to embed inline btn which is an icon in a guilabel in the latex and html outputs"
 LONG_DESCRIPTION = open("README.rst").read()
 
 setup_params = {
     # metadata
-    "name": "sphinx-icon",
+    "name": "sphinx-btn",
     "version": version,
     "license": "BSD 2-Clause",
     "description": DESCRIPTION,
@@ -29,8 +32,8 @@ setup_params = {
     "long_description_content_type": "text/x-rst",
     "author": "Pierrick Rambaud",
     "author_email": "pierrick.rambaud49@gmail.com",
-    "url": "https://github.com/12rambau/sphinx-icon",
-    "download_url": f"https://github.com/12rambau/sepal_ui/archive/v{version}.tar.gz",
+    "url": "https://github.com/12rambau/sphinx-btn",
+    "download_url": f"https://github.com/12rambau/shpinx-btn/archive/v{version}.tar.gz",
     "keywords": ["skeleton", "Python"],
     "classifiers": [
         "Development Status :: 5 - Production/Stable",

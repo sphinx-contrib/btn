@@ -52,6 +52,9 @@ This module defines an :code:`:icon:` role which insert the requested icon. It t
 
     I'm a folder icon: :icon:`fa fa-folder`.
 
+
+I'm a :btn:`guilabel`, :btn:`<fa fa-folder>`, :btn:`<fa fa-folder> success`
+
 I'm a folder icon: :icon:`fa fa-folder`.
 
 HTML output

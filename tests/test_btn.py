@@ -2,15 +2,15 @@ from docutils import nodes
 from pathlib import Path
 import pytest
 
-import sphinxcontrib.icon.icon as icon
-from sphinxcontrib.icon.font_handler import Fontawesome
+import sphinxcontrib.btn.btn as btn
+from sphinxcontrib.btn.font_handler import Fontawesome
 
 
 class TestIcon:
     def test_get_glyph(self, icons, data_dir):
 
-        icon.font_handler = Fontawesome()
-        icon.font_handler.download_asset("html", data_dir)
+        btn.font_handler = Fontawesome()
+        btn.font_handler.download_asset("html", data_dir)
 
         # expected results
         expected_results = {
@@ -23,11 +23,11 @@ class TestIcon:
 
         # test the true icons
         for k, i in icons["true"].items():
-            assert expected_results[k] == icon.get_glyph(i["icon"])
+            assert expected_results[k] == btn.get_glyph(i["icon"])
 
         # test the fake style
         with pytest.raises(ValueError) as e:
-            icon.get_glyph(icons["false"]["fat"]["icon"])
+            btn.get_glyph(icons["false"]["fat"]["icon"])
 
         assert str(e.value) == 'invalid icon name: "fat fa-folder"'
 
@@ -39,23 +39,23 @@ class TestIcon:
 
     def test_visit_html(self, app, icons, data_dir):
 
-        icon.font_handler = Fontawesome()
-        icon.font_handler.download_asset("html", data_dir)
+        btn.font_handler = Fontawesome()
+        btn.font_handler.download_asset("html", data_dir)
 
         for i in icons["true"].values():
-            icon.visit_icon_node_html(app, i)
+            btn.visit_icon_node_html(app, i)
             assert app.body.output == f'<i class="{i["icon"]}"></i>'
 
         for i in icons["false"].values():
             with pytest.raises(nodes.SkipNode):
-                icon.visit_icon_node_html(app, i)
+                btn.visit_icon_node_html(app, i)
 
         return
 
     def test_visit_latex(self, app, icons, data_dir):
 
-        icon.font_handler = Fontawesome()
-        icon.font_handler.download_asset("latex", data_dir)
+        btn.font_handler = Fontawesome()
+        btn.font_handler.download_asset("latex", data_dir)
 
         # expecteed results for true icons
         expected_results = {
@@ -67,7 +67,7 @@ class TestIcon:
         }
 
         for k, i in icons["true"].items():
-            icon.visit_icon_node_latex(app, i)
+            btn.visit_icon_node_latex(app, i)
             assert app.body.output == expected_results[k]
 
         # check that the package was added once
@@ -79,7 +79,7 @@ class TestIcon:
 
         # check that the appropiate error is raised
         with pytest.raises(nodes.SkipNode):
-            icon.visit_icon_node_unsuported(app, icons["true"]["folder"])
+            btn.visit_icon_node_unsuported(app, icons["true"]["folder"])
 
         return
 
@@ -87,9 +87,9 @@ class TestIcon:
 
         # check that the node has the appropirate class
         _ = None
-        node, messages = icon.icon_role(_, _, icons["true"]["folder"], _, _)
+        node, messages = btn.icon_role(_, _, icons["true"]["folder"], _, _)
 
-        assert isinstance(node[0], icon.icon)
+        assert isinstance(node[0], btn.icon)
         assert len(messages) == 0
 
         return
