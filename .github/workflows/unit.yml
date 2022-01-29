@@ -29,7 +29,7 @@ jobs:
       - name: test with pytest
         run: coverage run -m pytest --color=yes tests
       - name: coverage
-        run: coverage report -m
+        run: coverage xml
       - name: codecov
         uses: codecov/codecov-action@v2
         with:
