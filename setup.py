@@ -32,8 +32,8 @@ setup_params = {
     "long_description_content_type": "text/x-rst",
     "author": "Pierrick Rambaud",
     "author_email": "pierrick.rambaud49@gmail.com",
-    "url": "https://github.com/sphinxcontrib/btn",
-    "download_url": f"https://github.com/sphinxcontrib/btn/archive/v{version}.tar.gz",
+    "url": "https://github.com/sphinx-contrib/btn",
+    "download_url": f"https://github.com/sphinx-contrib/btn/archive/v{version}.tar.gz",
     "keywords": ["Python", "Sphnx", "extention", "fontawesome"],
     "classifiers": [
         "Development Status :: 5 - Production/Stable",
