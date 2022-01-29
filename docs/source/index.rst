@@ -1,5 +1,5 @@
-Sphinx-Icon
-===========
+sphinx-btn
+==========
 
 Overview
 --------

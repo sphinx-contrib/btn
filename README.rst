@@ -1,4 +1,4 @@
-Sphinx-Btn
+sphinx-btn
 ===========
 
 .. image:: https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat
@@ -52,5 +52,5 @@ Contribute
 ----------
 
 If you want to contribute you can fork the project in you own repository and then use it. 
-If you consider working with us, please follow the `contributing guidelines <https://github.com/12rambau/sphinx-btn/blob/main/CONTRIBUTING.rst>`__. 
-Meet our `contributor <https://github.com/12rambau/sphinx-btn/blob/main/AUTHORS.rst>`__. 
+If you consider working with us, please follow the `contributing guidelines <https://github.com/sphinxcontrib/btn/blob/main/CONTRIBUTING.rst>`__. 
+Meet our `contributor <https://github.com/sphinxcontrib/btn/blob/main/AUTHORS.rst>`__. 
