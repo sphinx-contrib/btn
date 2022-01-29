@@ -31,4 +31,7 @@ jobs:
       - name: coverage
         run: coverage report -m
       - name: codecov
-        run: bash <(curl -s https://codecov.io/bash)
+        uses: codecov/codecov-action@v2
+        with:
+            token: ${{ secrets.CODECOV_TOKEN }}
+            verbose: true # optional (default = false)
