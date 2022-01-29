@@ -21,12 +21,12 @@ Sphinx-Btn
    :target: https://pypi.org/project/sphinx-btn/
    :alt: supported Python version
 
-.. image:: https://github.com/12rambau/sphinx-btn/actions/workflows/unit.yml/badge.svg
-    :target: https://github.com/12rambau/sphinx-btn/actions/workflows/unit.yml
+.. image:: https://github.com/sphinxcontrib/btn/actions/workflows/unit.yml/badge.svg
+    :target: https://github.com/sphinxcontrib/btn/actions/workflows/unit.yml
     :alt: build
 
-.. image:: https://codecov.io/gh/12rambau/sphinx-btn/branch/main/graph/badge.svg?token=NSdnY0hJpF
-    :target: https://codecov.io/gh/12rambau/sphinx-btn
+.. image:: https://codecov.io/gh/sphinxcontrib/btn/branch/main/graph/badge.svg?token=NSdnY0hJpF
+    :target: https://codecov.io/gh/sphinxcontrib/btn
     :alt: Test Coverage
     
 .. image:: https://readthedocs.org/projects/sphinx-btn/badge/?version=latest
