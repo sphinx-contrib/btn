@@ -20,10 +20,10 @@ release = __version__
 # -- General configuration -----------------------------------------------------
 
 extensions = [
-    "sphinx.ext.imgconverter",
     "sphinx_copybutton",
     "sphinxcontrib.icon",
     "sphinxcontrib.btn",
+    "sphinx_design",
 ]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 

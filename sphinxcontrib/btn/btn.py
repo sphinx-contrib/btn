@@ -23,19 +23,18 @@ class Btn(SphinxRole):
 
     def run(self) -> Tuple[List[nodes.Node], List[str]]:
         """Setup the role in the builder context."""
-        if not self.text:
-            logger.warning(f'btn role cannot be empty')
+        m = re.match("^(?P<icon><.+>)?(?P<title>.*)?$", self.text)
+        if not m:
+            logger.warning("btn role cannot be empty")
             raise nodes.SkipNode
 
         # split icon and text parameters in 2 variables
-        m = re.match("^(?P<icon><.+>)?(?P<title>.*)?$", self.text)
         icon = m.group("icon") or ""
         title = m.group("title") or ""
 
         # build the node with sanitized strings
         node = btn_node(
-            icon=icon.replace("<", "").replace(">", ""),
-            title=title.strip()
+            icon=icon.replace("<", "").replace(">", ""), title=title.strip()
         )
 
         return [node], []

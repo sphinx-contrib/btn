@@ -37,7 +37,17 @@ Overview
 --------
 
 :code:`sphinx-btn` is a Sphinx extention to allow developers to use the :code:`btn` role to display inlined btn in their documentation. A btn is composed of an icon and/or some text.
-The extention currently supports only Fontawsome 5.15.4 icons.
+The extention currently supports only Fontawsome 6.3.0 icons.
+
+.. code-block:: rst
+
+    I'm a :btn:`<fa-solid fa-folder> fa-folder` btn.
+    I'm a :btn:`<fa-solid fa-folder>` btn.
+    I'm a :btn:`fa-folder` btn.
+
+.. image:: https://raw.githubusercontent.com/sphinx-contrib/btn/main/docs/_static/demo.png
+    :alt: demo result
+
 Please go to our `doc <https://sphinx-btn.readthedocs.io/en/latest/>`__ if you want to know more.
 
 Contribute

@@ -1,7 +1,7 @@
 """Btn extention to embed icon in sphinx guilabels outputs."""
 
-from typing import Any, Dict
 from textwrap import dedent
+from typing import Any, Dict
 
 from sphinx.application import Sphinx
 from sphinx.config import Config
@@ -12,11 +12,11 @@ __version__ = "0.1.0"
 __author__ = "Pierrick Rambaud"
 __email__ = "pierrick.rambaud49@gmail.com"
 
-def tbox_handler(app: Sphinx, config: Config) -> None:
-    """add the tbox command to preamble"""
 
+def tbox_handler(app: Sphinx, config: Config) -> None:
+    """Add the tbox command to preamble."""
     if "preamble" not in config.latex_elements:
-            config.latex_elements["preamble"] = ""
+        config.latex_elements["preamble"] = ""
 
     config.latex_elements["preamble"] += dedent(
         r"\newtcbox{\sphinxbtn}[1][]{box align=base, nobeforeafter, size=small, boxsep=2pt, #1}"
