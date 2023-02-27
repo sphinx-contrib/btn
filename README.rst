@@ -13,8 +13,8 @@ sphinx-btn
     :target: https://pypi.org/project/sphinx-btn/
     :alt: supported Python version
 
-.. image:: https://img.shields.io/github/actions/workflow/status/sphinx-contrib/btn/unit.yaml?logo=github&logoColor=white
-    :target: https://github.com/sphinx-contrib/btn/actions/workflows/unit.yaml
+.. image:: https://img.shields.io/github/actions/workflow/status/sphinx-contrib/btn/unit.yml?logo=github&logoColor=white
+    :target: https://github.com/sphinx-contrib/btn/actions/workflows/unit.yml
     :alt: GitHub Workflow Status
 
 .. image:: https://img.shields.io/codecov/c/github/sphinx-contrib/btn?logo=codecov&logoColor=white
