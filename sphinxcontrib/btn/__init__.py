@@ -1,23 +1,40 @@
+"""Btn extention to embed icon in sphinx guilabels outputs."""
+
+from textwrap import dedent
+from typing import Any, Dict
+
+from sphinx.application import Sphinx
+from sphinx.config import Config
+
+from .btn import _NODE_VISITORS, Btn, btn_node
+
 __version__ = "0.1.0"
 __author__ = "Pierrick Rambaud"
 __email__ = "pierrick.rambaud49@gmail.com"
 
-from . import btn
+
+def tbox_handler(app: Sphinx, config: Config) -> None:
+    """Add the tbox command to preamble."""
+    if "preamble" not in config.latex_elements:
+        config.latex_elements["preamble"] = ""
+
+    config.latex_elements["preamble"] += dedent(
+        r"\newtcbox{\sphinxbtn}[1][]{box align=base, nobeforeafter, size=small, boxsep=2pt, #1}"
+    )
 
 
-def setup(app):
-    """Install the plugin.
+def setup(app: Sphinx) -> Dict[str, Any]:
+    """Add btn node to the sphinx builder."""
+    # load the btn node/role
+    app.add_node(btn_node, **_NODE_VISITORS)  # type: ignore
+    app.add_role("btn", Btn())
 
-    :param app: Sphinx application context.
-    """
+    # install latex files and extentions
+    app.add_latex_package("tcolorbox")
+    app.connect("config-inited", tbox_handler)
 
-    # download the font to the output folder
-    app.connect("builder-inited", btn.download_font_assets)
-
-    # create the node
-    app.add_node(btn.btn, **btn._NODE_VISITORS)
-
-    # create the role
-    app.add_role("btn", btn.btn_role)
-
-    return
+    return {
+        "version": __version__,
+        "parallel_read_safe": True,
+        "parallel_write_safe": True,
+    }

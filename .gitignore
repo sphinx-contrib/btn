@@ -128,5 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# system IDE 
+# system IDE
 .vscode/
+
+# ruff files
+.ruff_cache
