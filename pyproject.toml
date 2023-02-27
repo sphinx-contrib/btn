@@ -7,7 +7,7 @@ name = "sphinx-btn"
 version = "0.1.0"
 description = "A sphinx custom role to embed inline btn which is an icon in a guilabel in the latex and html outputs"
 requires-python = ">=3.6.9"
-dependencies = ["sphinx", "pyyaml"]
+dependencies = ["sphinx", "sphinx-icon"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Framework :: Sphinx :: Extension",

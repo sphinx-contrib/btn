@@ -11,9 +11,9 @@ Please go to our `doc <https://sphinx-btn.readthedocs.io/en/latest/>`__ if you w
 Contribute
 ^^^^^^^^^^
 
-If you want to contribute you can fork the project in you own repository and then use it. 
-If you consider working with us, please follow the `contributing guidelines <https://github.com/sphinx-contrib/btn/blob/main/CONTRIBUTING.rst>`__. 
-Meet our `contributor <https://github.com/sphinx-contrib/btn/blob/main/AUTHORS.rst>`__. 
+If you want to contribute you can fork the project in you own repository and then use it.
+If you consider working with us, please follow the `contributing guidelines <https://github.com/sphinx-contrib/btn/blob/main/CONTRIBUTING.rst>`__.
+Meet our `contributor <https://github.com/sphinx-contrib/btn/blob/main/AUTHORS.rst>`__.
 
 Installation
 ------------
@@ -47,9 +47,9 @@ Usage
 This module provides support for including inlined fontawesome btn in Sphinx rst documents.
 
 This module defines the :code:`btn` role to display inlined btn in their documentation. A btn is composed of an icon and/or some text.
-The extention currently supports only Fontawsome 5.15.4 icons. You'll find the complete list of available icons on the `fontawesome website <https://fontawesome.com/v5.15/icons?d=gallery&p=2>`__. the strcuture of the role is the following: 
+The extention currently supports only Fontawsome 5.15.4 icons. You'll find the complete list of available icons on the `fontawesome website <https://fontawesome.com/v5.15/icons?d=gallery&p=2>`__. the strcuture of the role is the following:
 
-.. code-block:: rst 
+.. code-block:: rst
 
     :btn:`<icon_name> the_text`
 
@@ -60,7 +60,7 @@ The extention currently supports only Fontawsome 5.15.4 icons. You'll find the c
 Example
 ^^^^^^^
 
-Build a sentence with a button with text and icon: 
+Build a sentence with a button with text and icon:
 
 .. code-block:: rst
 
@@ -68,7 +68,7 @@ Build a sentence with a button with text and icon:
 
 which will render as: When the form is complete click on :btn:`<fa fa-check> send`
 
-Build a sentence with only an icon: 
+Build a sentence with only an icon:
 
 .. code-block:: rst
 
@@ -76,7 +76,7 @@ Build a sentence with only an icon:
 
 Which will render as: Click on :btn:`<fa fa-globe>` to see the map.
 
-Finally it can only be text: 
+Finally it can only be text:
 
 .. code-block:: rst
 
@@ -89,13 +89,13 @@ HTML output
 
 In the HTML output, the CSS and JS from Fontawesome 5.15.4 are added to the output in the :code:`<head>` tag.
 
-.. code-block:: html 
+.. code-block:: html
 
     <link rel="stylesheet" type="text/css" href="_font/fontawesome/css/all.min.css">
     <!-- -->
     <script src="_font/fontawesome/css/all.min.js">
 
-Then for each btn role occurence an :code:`<span>` tag will be used: 
+Then for each btn role occurence an :code:`<span>` tag will be used:
 
 .. code-block:: html
 
@@ -117,7 +117,7 @@ Then a prestyled macro is created from :code:`tcolorbox`:
 
     \newtcbox{\sphinxbtn}[1][]{box align=base, nobeforeafter, size=small, boxsep=2pt, #1}
 
-Finally for each btn role occurence the following command will be used: 
+Finally for each btn role occurence the following command will be used:
 
 .. code-block:: latex
 

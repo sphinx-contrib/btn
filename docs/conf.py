@@ -22,6 +22,7 @@ release = __version__
 extensions = [
     "sphinx.ext.imgconverter",
     "sphinx_copybutton",
+    "sphinxcontrib.icon",
     "sphinxcontrib.btn",
 ]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
