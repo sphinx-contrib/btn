@@ -7,9 +7,9 @@ build:
     nodejs: "19"
 
 sphinx:
-  configuration: docs/source/conf.py
+  configuration: docs/conf.py
 
-formats: [epub, pdf]
+formats: [pdf]
 
 python:
   install:
