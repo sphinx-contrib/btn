@@ -54,7 +54,7 @@ setup_params = {
     "cmdclass": {"develop": DevelopCmd},
     # extras_require
     "extras_require": {
-        "dev": ["pre-commit", "commitizen"],
+        "dev": ["pre-commit", "commitizen", "nox"],
         "test": ["coverage", "pytest"],
         "doc": [
             "sphinxcontrib-spelling",
