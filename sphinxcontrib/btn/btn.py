@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-from pathlib import Path
 import re
+from pathlib import Path
 
 from docutils import nodes
-from .font_handler import Fontawesome
 from sphinx.util import logging
+
+from .font_handler import Fontawesome
 
 # -- global variables ----------------------------------------------------------
 font_handler = None
@@ -17,11 +18,9 @@ class btn(nodes.General, nodes.Element):
 
 
 def download_font_assets(app):
+    """Download the fonts from the web assets and prepare them to be used in the documentation output directory
+    :param app: the current Sphinx application.
     """
-    Download the fonts from the web assets and prepare them to be used in the documentation output directory
-    :param app: the current Sphinx application
-    """
-
     # start the font_handler
     font_handler = Fontawesome()
 
@@ -47,14 +46,12 @@ def download_font_assets(app):
 
 
 def get_glyph(icon):
-    """
-    get the glyph from text
+    """get the glyph from text.
 
     Return a tuple of (glyph, font) from the provided text. raise an error if one of them does not exist
 
     :param icon: The text to transform (e.g. "fa fa-folder")
     """
-
     # split the icon name to find the name inside
     m = re.match(r"^(fab|far|fa|fas) fa-([\w-]+)$", icon)
     if not m:
@@ -67,8 +64,7 @@ def get_glyph(icon):
 
 
 def depart_btn_node(self, node):
-    """
-    Empty depart function, everything is handled in visit
+    """Empty depart function, everything is handled in visit.
 
     :param node: the btn node
     """
@@ -76,12 +72,10 @@ def depart_btn_node(self, node):
 
 
 def visit_btn_node_html(self, node):
-    """
-    create the html output
+    """create the html output.
 
     :param node: the btn node
     """
-
     # test if the icon exist in the metadata
     # only if an icon is actually set
     icon = node["icon"]
@@ -104,12 +98,10 @@ def visit_btn_node_html(self, node):
 
 
 def visit_btn_node_latex(self, node):
-    """
-    create the latex output
+    """create the latex output.
 
     :param node: the btn node
     """
-
     # create the macro to display the btn in the latex document
     # install 2 packages tcolorbox and fontawesome5
     # create a sphinxbtn command
@@ -161,12 +153,10 @@ def visit_btn_node_latex(self, node):
 
 
 def visit_btn_node_unsuported(self, node):
-    """
-    raise error when the requested output is not supported
+    """raise error when the requested output is not supported.
 
     :param node: the btn node
     """
-
     logger.warning("Unsupported output format (node skipped)", location=node)
     raise nodes.SkipNode
 
@@ -181,8 +171,7 @@ _NODE_VISITORS = {
 
 
 def btn_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
-    """
-    add inline btn role
+    """add inline btn role.
 
     Returns 2 part tuple containing list of nodes to insert into the
     document and a list of system messages.  Both are allowed to be
@@ -196,7 +185,6 @@ def btn_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     :param options: Directive options for customization.
     :param content: The directive content for customization.
     """
-
     # get the icon parameters
     if text.find("<") != -1:
         start = text.find("<")

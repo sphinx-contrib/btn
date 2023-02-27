@@ -10,7 +10,6 @@ def setup(app):
 
     :param app: Sphinx application context.
     """
-
     # download the font to the output folder
     app.connect("builder-inited", btn.download_font_assets)
 

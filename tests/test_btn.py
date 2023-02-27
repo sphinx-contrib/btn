@@ -1,6 +1,7 @@
-from docutils import nodes
 from pathlib import Path
+
 import pytest
+from docutils import nodes
 
 import sphinxcontrib.btn.btn as btn
 from sphinxcontrib.btn.font_handler import Fontawesome
@@ -117,7 +118,7 @@ class TestBtn:
 
     @pytest.fixture
     def app(self):
-        """mock the app builder for warning in fonctions"""
+        """mock the app builder for warning in fonctions."""
 
         class Builder:
             pass
@@ -144,8 +145,7 @@ class TestBtn:
 
     @pytest.fixture
     def btn_list(self):
-        """all possible combination of btn"""
-
+        """all possible combination of btn."""
         return {
             "all": {"icon": "fa fa-check", "text": "validate"},
             "icon": {"icon": "fa fa-globe", "text": ""},
