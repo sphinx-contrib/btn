@@ -28,8 +28,8 @@ def test_btn_latex(app, status, warning):
         in result
     )
 
-    assert r'\sphinxbtn{{\solid\symbol{"F07B}} fa-folder}' in result
-    assert r'\sphinxbtn{{\solid\symbol{"F07B}}}' in result
+    assert r'\sphinxbtn{{\fasolid\symbol{"F07B}} fa-folder}' in result
+    assert r'\sphinxbtn{{\fasolid\symbol{"F07B}}}' in result
     assert r"\sphinxbtn{fa-folder}" in result
 
 

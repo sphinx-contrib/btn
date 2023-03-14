@@ -34,7 +34,9 @@ class Btn(SphinxRole):
 
         # build the node with sanitized strings
         node = btn_node(
-            icon=icon.replace("<", "").replace(">", ""), title=title.strip()
+            icon=icon.replace("<", "").replace(">", ""),
+            title=title.strip(),
+            location=self.get_source_info(),
         )
 
         return [node], []
@@ -47,8 +49,9 @@ def visit_btn_node_html(translator: SphinxTranslator, node: btn_node) -> None:
 
     # add the icon if existing
     if node["icon"]:
-        icon.visit_icon_node_html(translator, icon.icon_node(icon=node["icon"]))
-        icon.depart_icon_node_html(translator, icon.icon_node(icon=node["icon"]))
+        icon_node = icon.icon_node(icon=node["icon"], location=node["location"])
+        icon.visit_icon_node_html(translator, icon_node)
+        icon.depart_icon_node_html(translator, icon_node)
 
     # add the title if existing
     if node["title"]:
@@ -68,8 +71,9 @@ def visit_btn_node_latex(translator: SphinxTranslator, node: btn_node) -> None:
 
     # add the icon if existing
     if node["icon"]:
-        icon.visit_icon_node_latex(translator, icon.icon_node(icon=node["icon"]))
-        icon.depart_icon_node_latex(translator, icon.icon_node(icon=node["icon"]))
+        icon_node = icon.icon_node(icon=node["icon"], location=node["location"])
+        icon.visit_icon_node_latex(translator, icon_node)
+        icon.depart_icon_node_latex(translator, icon_node)
 
     # add the title if existing
     if node["title"]:
@@ -84,7 +88,9 @@ def depart_btn_node_latex(translator: SphinxTranslator, node: btn_node) -> None:
 
 def visit_btn_node_unsuported(translator: SphinxTranslator, node: btn_node) -> None:
     """Raise error when the requested output is not supported."""
-    logger.warning("Unsupported output format (node skipped)")
+    logger.warning(
+        "Unsupported output format (node skipped)", location=node["location"]
+    )
     raise nodes.SkipNode
 
 
