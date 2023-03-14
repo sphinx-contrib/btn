@@ -8,7 +8,7 @@ from sphinx.config import Config
 
 from .btn import _NODE_VISITORS, Btn, btn_node
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __author__ = "Pierrick Rambaud"
 __email__ = "pierrick.rambaud49@gmail.com"
 

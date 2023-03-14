@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sphinx-btn"
-version = "0.1.1"
+version = "0.1.2"
 description = "A sphinx custom role to embed inline btn which is an icon in a guilabel in the latex and html outputs"
 requires-python = ">=3.6.9"
 dependencies = ["sphinx", "sphinx-icon>=0.2.2"]
@@ -78,7 +78,7 @@ warn_redundant_casts = true
 changelog_file = "CHANGELOG.md"
 tag_format = "v$major.$minor.$patch$prerelease"
 update_changelog_on_bump = true
-version = "0.1.1"
+version = "0.1.2"
 version_files = [
     "pyproject.toml:version",
     "sphinxcontrib/btn/__init__.py:__version__"
